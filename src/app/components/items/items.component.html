@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6" *ngFor="let item of items">
+      <div class="card" id="{{ item.id }}">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="#" class="item-name">{{ item.name }}</a>
+            <span class="price">{{ item.price }}</span>
+          </h5>
+          <p class="card-text">{{ item.info }}</p>
+          <button type="button" class="btn btn-primary show-info" (click)="reviewShow(item.id, $event)">{{ isReviewShow ? 'Hide review' : 'Show review' }}</button>
+          <button type="button" class="btn btn-danger btn-remove"(click)="removeItem(item.id)">Remove item</button>
+          <div class="review-wrapper" *ngFor="let review of item.review">
+            <div class="review" *ngIf="isReviewShow">
+              <p>{{ review.name }}: {{ review.text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-primary" role="alert" *ngIf="!items.length">Ой, список товаров пуст!</div>
+  </div>
+</div>

@@ -19,3 +19,7 @@ a {
 .card .card-body .review-wrapper {
   margin-top: 15px;
 }
+
+.items-alert {
+  text-align: center;
+}

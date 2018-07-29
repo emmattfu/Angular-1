@@ -37,15 +37,27 @@ export class ItemsComponent implements OnInit {
     }
   ];
   isReviewShow: boolean = false;
+  btnText: string = 'Show review';
   constructor() { }
 
   ngOnInit() {
   }
 
-  reviewShow(id, e) {
-    if (e.target.classList.contains('show-info')) {
-      this.isReviewShow = !this.isReviewShow;
+  reviewShow(id) {
+    const reviews = document.querySelectorAll('.review-wrapper');
+    const reviewsArr = Array.prototype.slice.call(reviews, 0);
+    reviewsArr.forEach(review => {
+      if (+review.id === id) {
+        review.classList.toggle("d-none");
+      }
+    });
+
+    if (this.btnText === 'Show review') {
+      this.btnText = 'Hide review';
+    } else {
+      this.btnText = 'Show review';
     }
+
   }
 
   removeItem(id) {

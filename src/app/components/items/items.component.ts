@@ -36,8 +36,6 @@ export class ItemsComponent implements OnInit {
       ]
     }
   ];
-  isReviewShow: boolean = false;
-  btnText: string = 'Show review';
   constructor() { }
 
   ngOnInit() {
@@ -51,13 +49,6 @@ export class ItemsComponent implements OnInit {
         review.classList.toggle("d-none");
       }
     });
-
-    if (this.btnText === 'Show review') {
-      this.btnText = 'Hide review';
-    } else {
-      this.btnText = 'Show review';
-    }
-
   }
 
   removeItem(id) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Items } from "../../models/items"
 
 @Component({
   selector: 'app-items',
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  items: any[] = [
+  items: Items[] = [
     {
       id: 1,
+      isOpen: false,
       name: "Salmon - Canned",
       price: "$91.56",
       info: "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
@@ -21,6 +23,7 @@ export class ItemsComponent implements OnInit {
     },
     {
       id: 2,
+      isOpen: false,
       name: "Soup - Beef, Base Mix",
       price: "$126.14",
       info: "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
@@ -41,21 +44,14 @@ export class ItemsComponent implements OnInit {
   ngOnInit() {
   }
 
-  reviewShow(id) {
-    const reviews = document.querySelectorAll('.review-wrapper');
-    const reviewsArr = Array.prototype.slice.call(reviews, 0);
-    reviewsArr.forEach(review => {
-      if (+review.id === id) {
-        review.classList.toggle("d-none");
-      }
-    });
+  reviewShow(item) {
+    item.isOpen = !item.isOpen;
   }
 
   removeItem(id) {
-    document.getElementById(id).remove();
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].id === id) {
-        this.items.splice(i, 1);
+    for (let item of this.items) {
+      if (item.id === id) {
+        this.items.splice(item.id, 1);
       }
     }
   }

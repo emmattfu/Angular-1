@@ -8,10 +8,10 @@
             <span class="price">{{ item.price }}</span>
           </h5>
           <p class="card-text">{{ item.info }}</p>
-          <button type="button" class="btn btn-primary show-info" (click)="reviewShow(item.id)">Show review</button>
+          <button type="button" class="btn btn-primary show-info" (click)="reviewShow(item)">Show info</button>
           <button type="button" class="btn btn-danger btn-remove"(click)="removeItem(item.id)">Remove item</button>
-          <div class="review-wrapper d-none" data-id="{{item.id}}" *ngFor="let review of item.review">
-            <div class="review">
+          <div class="review-wrapper" data-id="{{item.id}}" *ngFor="let review of item.review">
+            <div class="review" *ngIf="item.isOpen">
               <p>{{ review.name }}: {{ review.text }}</p>
             </div>
           </div>
